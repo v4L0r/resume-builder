@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Resume Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slider-value {
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px;
+            width: 100%;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .hint {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🦸 Super Resume Generator</h1>
+
+<form method="POST" action="/generate">
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="target_job">Target Job</label>
+    <input type="text" id="target_job" name="target_job" placeholder="e.g. Backend Developer, CEO, Wizard" required>
+
+    <label for="competitiveness">
+        Level of Competitiveness
+    </label>
+    <div class="slider-container">
+        <input
+            type="range"
+            id="competitiveness"
+            name="competitiveness"
+            min="0"
+            max="10"
+            value="5"
+            oninput="document.getElementById('sliderValue').innerText = this.value"
+        >
+        <span id="sliderValue" class="slider-value">5</span>
+    </div>
+    <div class="hint">
+        0 = painfully honest • 10 = statistically impossible hiring outcome
+    </div>
+
+    <label for="custom_prompt">Anything else you want the AI to know?</label>
+    <textarea
+        id="custom_prompt"
+        name="custom_prompt"
+        placeholder="Tone, jokes, forbidden phrases, lore, inside jokes, etc."
+    ></textarea>
+
+    <button type="submit">Generate My Super Resume</button>
+
+</form>
+
+</body>
+</html>
